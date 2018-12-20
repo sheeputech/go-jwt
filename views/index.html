@@ -1,24 +1,22 @@
 <!doctype html>
-<html lang="js">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>20181209sun-go-jwt</title>
 
-    <!-- BootStrap4 -->
+    <!-- BootStrap4 CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-
-<!-- BootStrap4 -->
+<!-- BootStrap4 CSS -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
     'use strict';
-
     let json = {};
     let jwtToken = {};
 
@@ -29,7 +27,6 @@
     }
 
     function tokenAuth() {
-
         json = {
             uuid: getUniqueStr(),
             username: $('#username').val(),
@@ -40,16 +37,14 @@
             type: "POST",
             url: "http://192.168.99.100:9000/token-auth",
             data: JSON.stringify(json),
-            // contentType: "application/JSON",
+            contentType: "application/JSON",
             dataType: "JSON",
             scriptCharset: "utf-8",
             success: (data) => {
                 jwtToken.token = data.token;
                 $('#tokenAuth').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`);
             },
-            error: (data) => {
-                $('#tokenAuth').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`);
-            }
+            error: (data) => { $('#tokenAuth').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`); }
         });
     }
     function refreshTokenAuth() {
@@ -61,12 +56,8 @@
             // dataType: "JSON",
             scriptCharset: "utf-8",
             headers: {"Authorization": "Bearer "+ jwtToken.token},
-            success: (data) => {
-                $('#refreshTokenAuth').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`);
-            },
-            error: (data) => {
-                $('#refreshTokenAuth').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`);
-            }
+            success: (data) => { $('#refreshTokenAuth').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`); },
+            error: (data) => { $('#refreshTokenAuth').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`); }
         });
     }
     function logout() {
@@ -78,12 +69,8 @@
             // dataType: "JSON",
             scriptCharset: "utf-8",
             headers: {"Authorization": "Bearer "+ jwtToken.token},
-            success: (data) => {
-                $('#logout').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`);
-            },
-            error: (data) => {
-                $('#logout').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`);
-            }
+            success: (data) => { $('#logout').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`); },
+            error: (data) => { $('#logout').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`); }
         });
     }
     function testHello() {
@@ -95,12 +82,8 @@
             // dataType: "JSON",
             scriptCharset: "utf-8",
             headers: {"Authorization": "Bearer "+ jwtToken.token},
-            success: (data) => {
-                $('#testHello').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`);
-            },
-            error: (data) => {
-                $('#testHello').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`);
-            }
+            success: (data) => { $('#testHello').append(`<p class="text-muted m-1">${JSON.stringify(data)}</p>`); },
+            error: (data) => { $('#testHello').append(`<p class="text-danger m-1">${JSON.stringify(data)}</p>`); }
         });
     }
 </script>
