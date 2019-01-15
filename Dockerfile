@@ -25,7 +25,7 @@ RUN wget https://github.com/git/git/archive/v2.20.0.tar.gz -O git.tar.gz \
         gettext \
         unzip
 
-WORKDIR /go/src/20181209sun-go-jwt
+WORKDIR /go/src/20181209sun-go-jwt/server
 COPY . .
 ENV GO111MODULE=on
 

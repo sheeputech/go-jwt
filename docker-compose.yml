@@ -26,18 +26,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - ./api:/go/src/20181209sun-go-jwt/api
-      - ./controllers:/go/src/20181209sun-go-jwt/controllers
-      - ./core:/go/src/20181209sun-go-jwt/core
-      - ./provision:/go/src/20181209sun-go-jwt/provision
-      - ./routers:/go/src/20181209sun-go-jwt/routers
-      - ./services:/go/src/20181209sun-go-jwt/services
-      - ./settings:/go/src/20181209sun-go-jwt/settings
-      - ./tests:/go/src/20181209sun-go-jwt/tests
-      - ./vendor:/go/src/20181209sun-go-jwt/vendor
-      - ./go.mod:/go/src/20181209sun-go-jwt/go.mod
-      - ./go.sum:/go/src/20181209sun-go-jwt/go.sum
-      - ./main.go:/go/src/20181209sun-go-jwt/main.go
+      - ./server:/go/src/20181209sun-go-jwt/server
     ports:
       - "9000:9000"
     environment:
@@ -51,7 +40,7 @@ services:
       context: ./.docker/nginx
     volumes:
       - ./.docker/nginx/logs:/var/log/nginx
-      - ./views/index.html:/usr/share/nginx/html/index.html
+      - ./client/index.html:/usr/share/nginx/html/index.html
     ports:
       - "80:80"
     depends_on:

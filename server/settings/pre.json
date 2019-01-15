@@ -1,0 +1,5 @@
+{
+  "PrivateKeyPath": "/go/src/20181209sun-go-jwt/server/settings/keys/20181209_private_key",
+  "PublicKeyPath": "/go/src/20181209sun-go-jwt/server/settings/keys/20181209_public_key.pub",
+  "JWTExpirationDelta": 72
+}
