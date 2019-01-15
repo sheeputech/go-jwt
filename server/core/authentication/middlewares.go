@@ -2,9 +2,10 @@ package authentication
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
-	"net/http"
 )
 
 func RequireTokenAuthentication(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
@@ -23,8 +24,4 @@ func RequireTokenAuthentication(w http.ResponseWriter, r *http.Request, next htt
 	} else {
 		w.WriteHeader(http.StatusUnauthorized)
 	}
-
-	fmt.Println(token)
-	fmt.Println(err)
-	fmt.Println(r.Header.Get("Authorization"))
 }

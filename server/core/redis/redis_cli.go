@@ -18,13 +18,11 @@ func Connect() (conn *RedisCli) {
 
 		instanceRedisCli.conn, err = redis.Dial("tcp", "192.168.99.100:6379")
 		if err != nil {
-			fmt.Println("connection failed: ", err)
 			panic(err)
 		}
 
 		if _, err := instanceRedisCli.conn.Do("AUTH", "SheepuTech"); err != nil {
 			instanceRedisCli.conn.Close()
-			fmt.Println("authorization failed: ", err)
 			panic(err)
 		}
 	}
